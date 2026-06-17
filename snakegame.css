@@ -1,0 +1,96 @@
+@import url('https://cdn.jsdelivr.net/gh/MonadABXY/mona-font/web/mona.css');
+
+:root {
+  --bg: #070B1F;
+  --surface: #101633;
+  --surface-soft: #1A2147;
+
+  --primary: #1F2A68;
+  --primary-light: #3546A3;
+
+  --accent: #FF5FA2;
+  --accent-soft: #FF9BC8;
+  --accent-glow: #FF4FD8;
+
+  --text: #EEF2FF;
+  --text-muted: #AAB3D8;
+
+  --border: #2B356B;
+  --font: 'Mona12', sans-serif;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font);
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg);
+    color: var(--text);
+    overflow: hidden;
+}
+
+p {
+    margin-bottom: 12px;
+}
+
+canvas {
+    background: var(--border);
+    border: 3px solid var(--text-muted);
+    display: block;
+    touch-action: none;
+}
+
+.dpad {
+    display: none;
+}
+
+@media (pointer: coarse) {
+    .dpad {
+        display: grid;
+        grid-template-areas:
+            ". up ."
+            "left center right"
+            ". down .";
+        grid-template-columns: repeat(3, 64px);
+        grid-template-rows: repeat(3, 64px);
+        gap: 6px;
+        margin-top: 20px;
+    }
+}
+
+.dpad-btn {
+    background: var(--surface);
+    border: 2px solid var(--border);
+    color: var(--text);
+    font-size: 22px;
+    border-radius: 10px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.08s, border-color 0.08s;
+}
+
+.dpad-btn:active {
+    background: var(--primary-light);
+    border-color: var(--accent);
+}
+
+.dpad-btn.up     { grid-area: up; }
+.dpad-btn.left   { grid-area: left; }
+.dpad-btn.right  { grid-area: right; }
+.dpad-btn.down   { grid-area: down; }
+.dpad-center     { grid-area: center; }
